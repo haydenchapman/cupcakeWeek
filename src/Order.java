@@ -1,3 +1,5 @@
+import java.io.File;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -86,6 +88,72 @@ public class Order {
                 ordering = false;
             }
 
+        }
+        //generate receipt
+        System.out.println(orders.get(0));
+        System.out.println(orders.get(0));
+
+        Double subTotal = 0.0;
+
+        //iterate through orders
+        for (int i = 2; i < orders.size(); i++){
+            if(orders.get(i).equals(cupcakeMenu.get(0))){
+                cupcakeMenu.get(0).type();
+                System.out.println(cupcakeMenu.get(0).getPrice());
+                //add to subtotal
+                subTotal = subTotal + cupcakeMenu.get(0).getPrice();
+            }
+            else if(orders.get(i).equals(cupcakeMenu.get(1))) {
+                cupcakeMenu.get(1).type();
+                System.out.println(cupcakeMenu.get(1).getPrice());
+                subTotal = subTotal + cupcakeMenu.get(1).getPrice();
+            }
+            else if(orders.get(i).equals(cupcakeMenu.get(2))) {
+                cupcakeMenu.get(2).type();
+                System.out.println(cupcakeMenu.get(2).getPrice());
+                subTotal = subTotal + cupcakeMenu.get(2).getPrice();
+            }
+            //drinks
+            else if(orders.get(i).equals(drinkMenu.get(0))){
+                drinkMenu.get(0).type();
+                System.out.println(drinkMenu.get(0).getPrice());
+                subTotal = subTotal + drinkMenu.get(0).getPrice();
+            }
+            else if(orders.get(i).equals(drinkMenu.get(1))){
+                drinkMenu.get(1).type();
+                System.out.println(drinkMenu.get(1).getPrice());
+                subTotal = subTotal + drinkMenu.get(1).getPrice();
+            }
+            else if(orders.get(i).equals(drinkMenu.get(2))){
+                drinkMenu.get(2).type();
+                System.out.println(drinkMenu.get(2).getPrice());
+                subTotal = subTotal + drinkMenu.get(2).getPrice();
+            }
+
+            //all subTotal
+            System.out.println("$" + subTotal + "\n");
+        }
+    }
+
+    public class CreateFile{
+        public CreateFile(){
+            try {
+                //file obj pathname
+                File salesData = new File("salesData.txt");
+
+                if (salesData.createNewFile()) {
+                    System.out.println("File created: " + salesData.getName());
+                } else {
+                    System.out.println("File already exist");
+                }
+            }
+            catch (IOException e){
+                System.out.println("ERROR!");
+            }
+        }
+    }
+    public class WriteToFile {
+        public WriteToFile(ArrayList<Object> order){
 
         }
     }
